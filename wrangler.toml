@@ -5,6 +5,11 @@ compatibility_date = "2023-11-21"
 [site]
 bucket = "./public" # Add the directory with your static assets!
 
+[[d1_databases]]
+binding = "DB" # available in your Worker on env.DB
+database_name = "blog-pixels"
+database_id = "3bb066f1-77fd-423b-960f-1f2ec3a84f6b"
+
 # Variable bindings. These are arbitrary, plaintext strings (similar to environment variables)
 # Note: Use secrets to store sensitive data.
 # Docs: https://developers.cloudflare.com/workers/platform/environment-variables
