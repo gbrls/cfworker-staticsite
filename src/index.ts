@@ -77,7 +77,7 @@ async function myfetch(request, env, ctx) {
     const url = getURLPath(request);
 
     let new_url = url.substring(prefix.length);
-    let p1 = env.DB.prepare("INSERT INTO pings (UserAgent, Referer, Country, Ip, Timestamp, URL, City) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)").bind(
+    env.DB.prepare("INSERT INTO pings (UserAgent, Referer, Country, Ip, Timestamp, URL, City) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)").bind(
         getHeaders(request),
         request.headers.get("referer"),
         getCountry(request),
@@ -87,14 +87,13 @@ async function myfetch(request, env, ctx) {
         getCity(request)
     ).run();
 
-    let p2 =  callWebhook(
+    callWebhook(
         `${getVerb(request)} ${getFlag(request)} :twisted_rightwards_arrows: \`${getURLPath(request)}\`${getReferer(request)}
 ${getIP(request)}
 :triangular_flag_on_post: **City:** ${getCity(request)}
 :identification_card: **User Agent:**\`\`\`${getHeaders(request)}\`\`\``,
         env
     );
-    return Promise.all([p1, p2]);
 }
 
 
