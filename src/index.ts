@@ -101,7 +101,7 @@ ${getIP(request)}
 export default {
     async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
         try {
-            await myfetch(request, env, ctx);
+            //await myfetch(request, env, ctx);
             // Add logic to decide whether to serve an asset or run your original Worker code
             return await getAssetFromKV(
                 {
