@@ -86,14 +86,6 @@ async function myfetch(request, env, ctx) {
         new_url,
         getCity(request)
     ).run();
-
-    callWebhook(
-        `${getVerb(request)} ${getFlag(request)} :twisted_rightwards_arrows: \`${getURLPath(request)}\`${getReferer(request)}
-${getIP(request)}
-:triangular_flag_on_post: **City:** ${getCity(request)}
-:identification_card: **User Agent:**\`\`\`${getHeaders(request)}\`\`\``,
-        env
-    );
 }
 
 
